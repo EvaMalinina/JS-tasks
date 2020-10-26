@@ -49,23 +49,24 @@ let MORSE_CODE = {
 };
 
 decodeMorse = function(morseCode){
-  let words = morseCode.split("   ");
-  let string = ""
+  let words = morseCode.split("   ")
+  let str = ""
 
-  for (let i in words){
-    if(words[i] != ''){
-      let word = words[i].split(" ");
-      for(let j in word){
-        if(word[j] != ''){
-          string += MORSE_CODE[word[j]];
+  for (let indexOfWord in words) {
+    if (words[indexOfWord] !== "") {
+      let lettersArr = words[indexOfWord].split(" ");
+
+      for ( let letter in  lettersArr) {
+        if ( letter !== "") {
+          str += MORSE_CODE[lettersArr[letter]]
         }
       }
-      if(i < words.length-1){
-        string += " "
+      if (indexOfWord < words.length - 1) {
+        str += " "
       }
     }
   }
-  return string
+  return str;
 }
 
 decodeMorse('.... . -.--   . ...- .-')
